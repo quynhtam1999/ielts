@@ -1,34 +1,27 @@
-// Lưu toàn bộ dữ liệu vào localStorage của trình duyệt.
-// Lưu ý: dữ liệu nằm trên MÁY và TRÌNH DUYỆT bạn đang dùng.
-// Hãy vào trang "Tiến độ" → "Xuất dữ liệu" định kỳ để sao lưu.
+// Lưu dữ liệu học vào localStorage của trình duyệt.
+// Lưu ý: dữ liệu nằm trên MÁY và TRÌNH DUYỆT bạn đang dùng (website và file trên máy là hai nơi riêng).
 App.store = {
   KEY: 'paraphrase-studio-v1',
   state: null,
 
-  // Khoảng cách ôn lại (ngày) theo từng "hộp" của hệ thống Leitner
-  INTERVALS: [0, 1, 2, 4, 7, 15, 30, 60],
-
   defaultState() {
-    const today = App.ui.today();
     return {
-      version: 1,
-      words: App.data.seedWords.map((w, i) => ({
-        id: 'w' + Date.now().toString(36) + i,
-        ...w,
-        srs: { box: 0, due: today },
-      })),
-      activity: {},      // { '2026-11-02': { topics: 5, writing: 1, ... } }
-      topics: {},        // { urban: { 'public transport': { pct: 70, para, coll, date } } }
-      writing: [],       // các bài viết đã lưu
-      speaking: [],      // các câu trả lời đã lưu
-      hunts: [],         // các đoạn văn đã săn tham chiếu
+      version: 2,
+      activity: {},  // { '2026-11-02': { topics: 5, colloc: 10 } } số bài làm mỗi ngày
+      topics: {},    // từ khoá: { urban: { 'public transport': { pct: 70, para, coll, date } } }
+      colloc: {},    // collocation: { 'ease traffic congestion': { ok: 2, bad: 1, last: '2026-11-02' } }
+      hunts: [],     // các đoạn văn đã săn tham chiếu
     };
   },
 
   load() {
     try {
       const raw = localStorage.getItem(this.KEY);
-      this.state = raw ? { ...this.defaultState(), ...JSON.parse(raw) } : this.defaultState();
+      const old = raw ? JSON.parse(raw) : {};
+      // Chỉ giữ các phần còn dùng (bỏ dữ liệu của những trang đã xoá)
+      const def = this.defaultState();
+      this.state = def;
+      Object.keys(def).forEach((k) => { if (k !== 'version' && old[k]) this.state[k] = old[k]; });
     } catch (e) {
       console.warn('Không đọc được dữ liệu, dùng dữ liệu mặc định', e);
       this.state = this.defaultState();
@@ -69,44 +62,12 @@ App.store = {
     return count;
   },
 
-  // ----- Sổ từ vựng -----
-  dueWords() {
-    const today = App.ui.today();
-    return this.state.words.filter((w) => (w.srs?.due || today) <= today);
-  },
-  upsertWord(word) {
-    const list = this.state.words;
-    const i = list.findIndex((w) => w.id === word.id);
-    if (i >= 0) list[i] = word;
-    else list.unshift({ ...word, id: 'w' + Date.now().toString(36), srs: { box: 0, due: App.ui.today() } });
-    this.save();
-  },
-  deleteWord(id) {
-    this.state.words = this.state.words.filter((w) => w.id !== id);
-    this.save();
-  },
-  // grade: 0 = quên, 1 = nhớ, 2 = dễ
-  gradeWord(id, grade) {
-    const w = this.state.words.find((x) => x.id === id);
-    if (!w) return;
-    const box = grade === 0 ? 0 : Math.min((w.srs?.box || 0) + grade, this.INTERVALS.length - 1);
-    const days = grade === 0 ? 0 : this.INTERVALS[box];
-    w.srs = { box, due: App.ui.addDays(App.ui.today(), days) };
-    this.save();
-  },
-
-  // ----- Sao lưu -----
-  exportJSON() {
-    return JSON.stringify(this.state, null, 2);
-  },
-  importJSON(text) {
-    const data = JSON.parse(text);
-    if (!data || !Array.isArray(data.words)) throw new Error('File không đúng định dạng');
-    this.state = { ...this.defaultState(), ...data };
-    this.save();
-  },
-  reset() {
-    this.state = this.defaultState();
+  // Ghi kết quả một câu điền collocation
+  recordColloc(c, ok) {
+    const s = this.state.colloc[c] || (this.state.colloc[c] = { ok: 0, bad: 0 });
+    if (ok) s.ok++; else s.bad++;
+    s.last = App.ui.today();
+    s.lastOk = ok;
     this.save();
   },
 };

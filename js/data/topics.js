@@ -3,10 +3,14 @@
 //   - "cách gọi khác": paraphrase, từ tổng quát/cụ thể, gọi theo vai trò, cụm tham chiếu (this…/these…)
 //   - "collocation": động từ / tính từ / danh từ hay đi kèm; dấu ~ thay cho từ gốc
 //   - Các mục cách nhau bằng dấu |
+// units: các Unit sách English Collocations in Use (I = Intermediate, A = Advanced) → bài điền collocation,
+//        lấy từ js/data/collocations.js (tạo tự động từ file Anki).
+// group: 'topic' = chủ đề IELTS, 'skill' = collocation theo chức năng (dùng cho mọi đề Writing/Speaking).
 // Muốn thêm từ: chép 1 dòng có sẵn rồi sửa. Muốn thêm chủ đề: chép cả khối { id … }.
 App.data.topics = [
   {
     id: 'urban', icon: '🏙️', name: 'Urbanisation', vi: 'Đô thị hoá & đời sống thành phố',
+    units: 'I15 I16 I21 A32',
     items: [
       ["public transport", "giao thông công cộng",
         "public transit | mass transit | buses and metro lines | buses, trams and trains | transport networks | the transport system | commuter services | these public services | this service",
@@ -43,6 +47,7 @@ App.data.topics = [
   },
   {
     id: 'transport', icon: '🚆', name: 'Transport', vi: 'Giao thông & đi lại',
+    units: 'A25',
     items: [
       ["private cars", "ô tô cá nhân",
         "private vehicles | cars | motor vehicles | automobiles | personal transport | motorists | drivers | these vehicles",
@@ -74,6 +79,7 @@ App.data.topics = [
   },
   {
     id: 'environment', icon: '🌿', name: 'Environment', vi: 'Môi trường & ô nhiễm',
+    units: 'I13 A31',
     items: [
       ["pollution", "ô nhiễm",
         "contamination | environmental damage | environmental degradation | pollutants | toxic emissions | dirty air and water | this problem",
@@ -106,6 +112,7 @@ App.data.topics = [
   },
   {
     id: 'energy', icon: '⚡', name: 'Energy & Climate', vi: 'Năng lượng & biến đổi khí hậu',
+    units: '',
     items: [
       ["climate change", "biến đổi khí hậu",
         "global warming | the climate crisis | rising global temperatures | changes in weather patterns | the warming of the planet | this phenomenon | this crisis",
@@ -137,6 +144,7 @@ App.data.topics = [
   },
   {
     id: 'education', icon: '🎓', name: 'Education', vi: 'Giáo dục',
+    units: 'I28 I29 A17',
     items: [
       ["students", "học sinh, sinh viên",
         "learners | pupils | schoolchildren | undergraduates | young people | school-leavers | graduates | trainees",
@@ -169,6 +177,7 @@ App.data.topics = [
   },
   {
     id: 'technology', icon: '💻', name: 'Technology', vi: 'Công nghệ',
+    units: 'I27 A36',
     items: [
       ["technology", "công nghệ",
         "technological advances | innovation | technological progress | modern devices | digital tools | gadgets | high-tech equipment | these developments",
@@ -198,6 +207,7 @@ App.data.topics = [
   },
   {
     id: 'health', icon: '🩺', name: 'Health', vi: 'Sức khoẻ & y tế',
+    units: 'I26 A37',
     items: [
       ["health", "sức khoẻ",
         "well-being | physical condition | fitness | good health | physical and mental health | quality of life",
@@ -230,6 +240,7 @@ App.data.topics = [
   },
   {
     id: 'work', icon: '💼', name: 'Work & Employment', vi: 'Công việc & việc làm',
+    units: 'I30 A11 A12',
     items: [
       ["employees", "nhân viên, người lao động",
         "workers | staff | the workforce | personnel | members of staff | the labour force | wage earners",
@@ -261,6 +272,7 @@ App.data.topics = [
   },
   {
     id: 'crime', icon: '⚖️', name: 'Crime & Law', vi: 'Tội phạm & pháp luật',
+    units: 'I34 I35 A38',
     items: [
       ["crime", "tội phạm (hành vi)",
         "criminal activity | offences | wrongdoing | lawbreaking | illegal acts | criminality | delinquency | these crimes",
@@ -291,6 +303,7 @@ App.data.topics = [
   },
   {
     id: 'government', icon: '🏛️', name: 'Government & Society', vi: 'Chính phủ & chi tiêu công',
+    units: 'I39 A30 A35',
     items: [
       ["the government", "chính phủ",
         "the authorities | policymakers | the state | officials | lawmakers | politicians | local councils | public bodies",
@@ -322,6 +335,7 @@ App.data.topics = [
   },
   {
     id: 'economy', icon: '🌐', name: 'Economy & Globalisation', vi: 'Kinh tế & toàn cầu hoá',
+    units: 'I37 A33 A34',
     items: [
       ["globalisation", "toàn cầu hoá",
         "global integration | the global economy | international trade | interconnectedness | the global village | economic integration | this process | this trend",
@@ -352,6 +366,7 @@ App.data.topics = [
   },
   {
     id: 'media', icon: '📺', name: 'Media & Advertising', vi: 'Truyền thông & quảng cáo',
+    units: 'I36 A21 A22 A42',
     items: [
       ["advertising", "quảng cáo",
         "advertisements | adverts | commercials | marketing | promotions | publicity | advertising campaigns",
@@ -383,6 +398,7 @@ App.data.topics = [
   },
   {
     id: 'family', icon: '👨‍👩‍👧', name: 'Family & Children', vi: 'Gia đình & trẻ em',
+    units: 'I19 I20 A19 A40',
     items: [
       ["children", "trẻ em",
         "young people | youngsters | minors | the younger generation | offspring | juveniles | schoolchildren | infants | kids",
@@ -413,6 +429,7 @@ App.data.topics = [
   },
   {
     id: 'ageing', icon: '👵', name: 'Population & Ageing', vi: 'Dân số & già hoá',
+    units: 'A41',
     items: [
       ["the elderly", "người cao tuổi",
         "older people | senior citizens | pensioners | retirees | the older generation | the aged | elderly people | people over 65",
@@ -444,6 +461,7 @@ App.data.topics = [
   },
   {
     id: 'tourism', icon: '🧳', name: 'Tourism & Culture', vi: 'Du lịch & văn hoá',
+    units: 'I14 A23 A26',
     items: [
       ["tourism", "ngành du lịch",
         "travel | the tourism industry | the tourist trade | the travel industry | sightseeing | holidays | this industry",
@@ -473,6 +491,7 @@ App.data.topics = [
   },
   {
     id: 'food', icon: '🌾', name: 'Food & Agriculture', vi: 'Thực phẩm & nông nghiệp',
+    units: 'I22',
     items: [
       ["food", "thực phẩm",
         "food products | foodstuffs | produce | groceries | meals | diet | nutrition | what we eat",
@@ -501,4 +520,23 @@ App.data.topics = [
         "reduce ~ | cut ~ | limit ~ | high ~ | rising ~ | global ~ | the impact of ~ | ~ is rising | plant-based alternatives"],
     ],
   },
+  // ----- Chủ đề IELTS chỉ có collocation (chưa có từ khoá) -----
+  { id: 'business', icon: '📈', name: 'Business & Marketing', vi: 'Kinh doanh, marketing & khách hàng', units: 'I31 A14 A15 A16', items: [] },
+  { id: 'arts', icon: '🎭', name: 'Arts, Sport & Leisure', vi: 'Phim, sách, âm nhạc, thể thao, thời trang', units: 'I23 I24 I25 A24 A27 A29', items: [] },
+  { id: 'war', icon: '🕊️', name: 'War & Peace', vi: 'Chiến tranh & hoà bình', units: 'I38 A39', items: [] },
+  { id: 'people', icon: '🧑', name: 'People & Personality', vi: 'Tính cách, ngoại hình, nhận xét về người', units: 'I17 I18 A43 A45', items: [] },
+
+  // ----- Collocation theo chức năng: dùng được cho mọi đề -----
+  { group: 'skill', id: 'opinion', icon: '💬', name: 'Opinions & Beliefs', vi: 'Nêu quan điểm, đồng ý / phản đối, khẳng định / phủ nhận', units: 'I55 I56 I58 A13 A58', items: [] },
+  { group: 'skill', id: 'academic', icon: '📝', name: 'Academic Writing', vi: 'Lập luận, so sánh – đối chiếu, trích dẫn, viết bài luận', units: 'I32 I33 A18 A44 A55', items: [] },
+  { group: 'skill', id: 'cause', icon: '🔗', name: 'Cause & Effect', vi: 'Nguyên nhân – kết quả', units: 'I53 A53', items: [] },
+  { group: 'skill', id: 'change', icon: '📊', name: 'Change, Numbers & Trends', vi: 'Thay đổi, số lượng, kích thước (rất hợp Task 1)', units: 'I42 I46 I48 A50 A51 A54', items: [] },
+  { group: 'skill', id: 'decision', icon: '🧭', name: 'Decisions & Plans', vi: 'Quyết định, lựa chọn, kế hoạch', units: 'I57 A28', items: [] },
+  { group: 'skill', id: 'effort', icon: '🏔️', name: 'Success, Effort & Difficulty', vi: 'Thành công – thất bại, nỗ lực, khó khăn, làm cho dễ hơn', units: 'I52 A48 A49 A56', items: [] },
+  { group: 'skill', id: 'time', icon: '⏳', name: 'Time, Starting & Stopping', vi: 'Thời gian, bắt đầu – kết thúc', units: 'I40 I51 A46 A52', items: [] },
+  { group: 'skill', id: 'feelings', icon: '💗', name: 'Feelings & Evaluation', vi: 'Thích – ghét, khen – chê, tình huống tích cực / tiêu cực', units: 'I59 I60 A59 A60', items: [] },
+  { group: 'skill', id: 'communication', icon: '🗣️', name: 'Communication', vi: 'Giao tiếp, cách nói, tiếng Anh xã giao', units: 'I49 A9 A20 A57', items: [] },
+  { group: 'skill', id: 'verbs', icon: '🔧', name: 'Everyday Verbs', vi: 'make, do, take, have, get, go… và cụm động từ', units: 'I7 I8 I9 A8 A10', items: [] },
+  { group: 'skill', id: 'senses', icon: '👂', name: 'Senses & Movement', vi: 'Âm thanh, màu sắc, chuyển động, ghi nhớ', units: 'I41 I43 I44 I45 I47 I50 I54 A47', items: [] },
+  { group: 'skill', id: 'basics', icon: '🧱', name: 'Collocation Basics', vi: 'Trạng từ nhấn mạnh, từ dễ nhầm, ẩn dụ, văn phong', units: 'I1 I2 I3 I4 I5 I6 I10 I11 I12 A1 A2 A3 A4 A5 A6 A7', items: [] },
 ];

@@ -9,8 +9,6 @@
   function route() {
     const [name, ...args] = (location.hash.slice(1) || 'home').split('/');
     const view = App.views[name] || App.views.home;
-    // Dừng ghi âm nếu rời trang Speaking
-    if (name !== 'speaking' && App.views.speaking.recording) App.views.speaking.stopAll();
 
     nav.querySelectorAll('a').forEach((a) => a.classList.toggle('active', a.dataset.route === name));
     nav.classList.remove('open');

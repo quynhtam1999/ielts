@@ -1,6 +1,15 @@
 // Săn chuỗi tham chiếu: dán một đoạn văn (bài mẫu, The Guardian…),
 // bấm vào các từ để tô màu những cách tác giả gọi cùng một sự vật.
 App.views.hunt = {
+  // Tách đoạn văn thành từng từ, nhớ vị trí để tô màu
+  tokenize(text) {
+    const out = [];
+    const re = /[A-Za-z][A-Za-z'’-]*/g;
+    let m;
+    while ((m = re.exec(text))) out.push({ raw: m[0], start: m.index, end: m.index + m[0].length });
+    return out;
+  },
+
   chain: 1,
   marks: {},   // { vị trí từ: số chuỗi }
   text: '',
@@ -43,7 +52,7 @@ App.views.hunt = {
 
   renderMark() {
     const esc = App.ui.esc;
-    const tokens = App.analyzer.tokenize(this.text);
+    const tokens = this.tokenize(this.text);
     let html = '';
     let pos = 0;
     tokens.forEach((t, i) => {
@@ -90,7 +99,7 @@ App.views.hunt = {
 
   // Gom các từ liền nhau cùng màu thành một cụm
   collect() {
-    const tokens = App.analyzer.tokenize(this.text);
+    const tokens = this.tokenize(this.text);
     return [1, 2, 3, 4].map((k) => {
       const items = [];
       let cur = null;
