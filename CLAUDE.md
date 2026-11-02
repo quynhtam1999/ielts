@@ -9,8 +9,8 @@
 - Repo: **`quynhtam1999/ielts`** (tên cũ `ielts-writing`, GitHub tự chuyển hướng).
 - Người dùng muốn app **đơn giản**:
   - **KHÔNG trắc nghiệm**, **KHÔNG chấm điểm tự động**: chỉ tự viết → **hiện đáp án** → người học tự so, tự bấm "Đã nhớ / Cần ôn".
-  - Đã bỏ theo yêu cầu: Luyện tập (trắc nghiệm), Writing, Speaking, Sổ từ vựng, Ôn thẻ, Tiến độ, 🧩 Điền collocation vào câu, 📖 Danh sách collocation, chấm điểm %. Đừng thêm lại nếu chưa được hỏi.
-  - Giao diện **sang trọng, tối giản, gradient cao cấp**.
+  - Đã bỏ theo yêu cầu: Luyện tập (trắc nghiệm), Writing, Speaking, Sổ từ vựng, Ôn thẻ, Tiến độ, 🧩 Điền collocation vào câu, 📖 Danh sách collocation, chấm điểm %, Săn tham chiếu (#hunt). Đừng thêm lại nếu chưa được hỏi.
+  - Giao diện **tối giản, đơn sắc hồng rose, KHÔNG gradient**, chữ to dễ đọc, biểu tượng nét mảnh (không emoji).
 
 ## Nội dung học
 - **5 kỹ thuật paraphrase** (`#learn`): lên/xuống cấp độ; gọi theo vai trò; đổi từ loại; đổi cấu trúc; chuỗi tham chiếu.
@@ -29,27 +29,28 @@
 ## Kiến trúc
 - **HTML/CSS/JS thuần**, không framework, không build, **không ES modules** (vì `file://`). Mọi thứ gắn vào `window.App`; **thứ tự `<script>` trong `index.html` quan trọng**.
 - Router hash: `#trang/a/b` → `App.views[trang].render(el, ['a','b'])` (`js/app.js`).
-- Giao diện tối sang trọng: nền đen sâu + quầng sáng rất nhẹ, gradient tím → hồng → vàng champagne chỉ cho điểm nhấn, **1 font có chân duy nhất: Merriweather** (dễ đọc, đủ dấu tiếng Việt; biến `--font`), nút bo tròn, ít viền. Responsive (900px menu ☰, 640px điện thoại). Màu ở `:root` trong `css/style.css`.
+- Giao diện sáng, tối giản, **đơn sắc hồng rose**: nền giấy hồng nhạt `#fbf6f7`, chữ rượu vang `#3a2129`, nhấn `--rose #b2456a`; không gradient, không bóng đổ. **1 font có chân duy nhất: Merriweather** (biến `--font`). Cỡ chữ gốc `html { font-size: 112.5% }` = 18px (điện thoại 17px). Biểu tượng: `App.icon(tên)` trong `js/icons.js` (Lucide, nét mảnh, nhận màu chữ); chủ đề có `icon: "leaf"`… Favicon: `favicon.svg`. Responsive (900px menu ☰, 640px điện thoại). Màu ở `:root` trong `css/style.css`.
 
 ```
-index.html             khung + menu (Trang chủ, Chủ đề, Tìm kiếm, Học kỹ thuật, Săn tham chiếu) + nạp script
+index.html             khung + menu (Trang chủ, Chủ đề, Tìm kiếm, Học kỹ thuật) + nạp script
+favicon.svg            biểu tượng tab trình duyệt
 css/style.css          toàn bộ giao diện
 js/ui.js               tạo App + tiện ích (esc, toast, ngày)
-js/storage.js          App.store: state = { activity, topics, hunts, lastTopic }, streak
+js/icons.js            biểu tượng nét mảnh: App.icon('leaf')
+js/storage.js          App.store: state = { activity, topics, lastTopic }, streak
 js/data/techniques.js  lý thuyết 5 kỹ thuật, cảnh báo, cách học
 js/data/topics.js      32 chủ đề, 573 từ khoá
 js/views/home.js       streak, thống kê, "Học tiếp", nhiệm vụ ngày (10 từ mới + ôn 5 từ "cần ôn")
 js/views/topics.js     trang Chủ đề (bảng dưới); bare()/fillColl() xử lý dấu ~
 js/views/search.js     #search: tìm trong mọi từ khoá (bỏ dấu tiếng Việt, ưu tiên khớp nguyên cụm)
 js/views/learn.js      #learn/<tech>: lý thuyết
-js/views/hunt.js       #hunt: dán đoạn văn, tô 4 chuỗi tham chiếu, lưu
 anki/list.py           xem collocation trong file Anki theo Unit (để soạn thêm từ khoá)
 ```
 
 | Hash | Chức năng |
 |---|---|
 | `#topics` | lưới chủ đề (2 nhóm) + ô tìm kiếm |
-| `#topics/<id>` | danh sách từ khoá (chấm: xanh đã nhớ · vàng cần ôn · vòng đã xem · xám chưa làm), nút Làm tiếp / Ôn từ cần ôn |
+| `#topics/<id>` | danh sách từ khoá (chấm: hồng đậm đã nhớ · hồng nhạt cần ôn · vòng đã xem · mờ chưa làm), nút Làm tiếp / Ôn từ cần ôn |
 | `#topics/<id>/terms/<n>` | tự viết ① cách gọi khác ② collocation → **Xem đáp án** (bấm cụm để nghe, en-GB) → ✓ Đã nhớ / ↺ Cần ôn → sang từ tiếp. Lưu `state.topics[id][từ] = { ok: true/false/null, date }` (dữ liệu cũ `{pct}`: ≥ 60% = đã nhớ). Hoạt động: từ mới → `topics`, từ đã làm → `review` |
 | `#search/<q>` | tìm theo từ khoá, nghĩa, cách gọi khác, collocation; bấm kết quả để luyện |
 

@@ -66,7 +66,7 @@ App.views.search = {
     el.innerHTML = `
       <section class="hero">
         <span class="eyebrow">${total} từ khoá · ${App.data.topics.length} chủ đề</span>
-        <h1>Tìm <span class="gradient-text">kiếm</span></h1>
+        <h1>Tìm <em class="accent">kiếm</em></h1>
         <p class="muted">Gõ tiếng Anh hoặc tiếng Việt (có dấu hay không dấu đều được). Máy tìm trong từ khoá, nghĩa,
           cách gọi khác và collocation. Bấm vào kết quả để luyện từ đó.</p>
         <div class="search-box"><input type="search" id="q" placeholder="vd: traffic, ô nhiễm, tackle, a heavy…" aria-label="Tìm kiếm" autocomplete="off"></div>
@@ -134,7 +134,7 @@ App.views.search = {
       return `<a class="hit-item" href="#topics/${t.id}/terms/${j}">
         <div class="row spread" style="align-items:baseline">
           <span><span class="hit-term">${this.hl(it.term, q)}</span> <span class="hit-vi">· ${this.hl(it.vi, q)}</span></span>
-          <span class="hit-topic">${t.icon} ${esc(t.name)}</span>
+          <span class="hit-topic">${esc(t.name)}</span>
         </div>
         ${chips.length ? `<div style="margin:.4rem -.18rem 0">${chips.slice(0, 8).join('')}${chips.length > 8 ? `<span class="small muted"> +${chips.length - 8}</span>` : ''}</div>` : ''}
       </a>`;
@@ -142,7 +142,7 @@ App.views.search = {
 
     box.innerHTML = `
       ${topics.length ? `<div class="row" style="margin-bottom:.6rem">${topics.map((t) =>
-        `<a class="chip" href="#topics/${t.id}">${t.icon} ${this.hl(t.name, q)}</a>`).join('')}</div>` : ''}
+        `<a class="chip" href="#topics/${t.id}">${App.icon(t.icon)} ${this.hl(t.name, q)}</a>`).join('')}</div>` : ''}
       <p class="small muted" style="margin:.4rem 0 0">${res.length} từ khoá${res.length > this.MAX ? `, hiện ${this.MAX} kết quả đầu: gõ thêm để thu hẹp` : ''}.
         <span class="k">≈</span> cách gọi khác · + collocation</p>
       <div class="hits">${res.slice(0, this.MAX).map(item).join('')}</div>`;

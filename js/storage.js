@@ -9,7 +9,6 @@ App.store = {
       version: 2,
       activity: {},     // { '2026-11-02': { topics: 5, review: 2 } } số từ làm mới / ôn lại mỗi ngày
       topics: {},       // kết quả từ khoá: { urban: { 'public transport': { pct: 70, date: '2026-11-02' } } }
-      hunts: [],        // các đoạn văn đã săn tham chiếu
       lastTopic: null,  // chủ đề học gần nhất (cho nút "Học tiếp")
     };
   },
@@ -33,7 +32,7 @@ App.store = {
     try {
       localStorage.setItem(this.KEY, JSON.stringify(this.state));
     } catch (e) {
-      App.ui.toast('⚠️ Không lưu được dữ liệu (trình duyệt chặn bộ nhớ?)');
+      App.ui.toast('Không lưu được dữ liệu (trình duyệt chặn bộ nhớ?)');
     }
   },
 

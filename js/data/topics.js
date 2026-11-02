@@ -8,11 +8,12 @@
 // App không chấm điểm: chỉ hiện đáp án để người học tự so.
 // units: các Unit sách English Collocations in Use (I = Intermediate, A = Advanced) đã dùng để soạn chủ đề này.
 //        Xem nhanh collocation của một Unit: python3 anki/list.py I15
+// icon: tên biểu tượng nét mảnh trong js/icons.js (bộ Lucide).
 // group: "skill" = collocation theo chức năng (dùng cho mọi đề Writing/Speaking); không có = chủ đề IELTS.
 // Muốn thêm từ: chép 1 khối [ … ] có sẵn rồi sửa. Muốn thêm chủ đề: chép cả khối { id … }.
 App.data.topics = [
   {
-    id: "urban", icon: "🏙️", name: "Urbanisation", vi: "Đô thị hoá & đời sống thành phố",
+    id: "urban", icon: "building-2", name: "Urbanisation", vi: "Đô thị hoá & đời sống thành phố",
     units: "I15 I16 I21 A32",
     items: [
       ["public transport", "giao thông công cộng",
@@ -100,7 +101,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "transport", icon: "🚆", name: "Transport", vi: "Giao thông & đi lại",
+    id: "transport", icon: "train-front", name: "Transport", vi: "Giao thông & đi lại",
     units: "A25",
     items: [
       ["private cars", "ô tô cá nhân",
@@ -171,7 +172,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "environment", icon: "🌿", name: "Environment", vi: "Môi trường & ô nhiễm",
+    id: "environment", icon: "leaf", name: "Environment", vi: "Môi trường & ô nhiễm",
     units: "I13 A31",
     items: [
       ["pollution", "ô nhiễm",
@@ -241,7 +242,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "energy", icon: "⚡", name: "Energy & Climate", vi: "Năng lượng & biến đổi khí hậu",
+    id: "energy", icon: "zap", name: "Energy & Climate", vi: "Năng lượng & biến đổi khí hậu",
     units: "",
     items: [
       ["climate change", "biến đổi khí hậu",
@@ -307,7 +308,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "education", icon: "🎓", name: "Education", vi: "Giáo dục",
+    id: "education", icon: "graduation-cap", name: "Education", vi: "Giáo dục",
     units: "I28 I29 A17",
     items: [
       ["students", "học sinh, sinh viên",
@@ -383,7 +384,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "technology", icon: "💻", name: "Technology", vi: "Công nghệ",
+    id: "technology", icon: "laptop", name: "Technology", vi: "Công nghệ",
     units: "I27 A36",
     items: [
       ["technology", "công nghệ",
@@ -449,7 +450,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "health", icon: "🩺", name: "Health", vi: "Sức khoẻ & y tế",
+    id: "health", icon: "stethoscope", name: "Health", vi: "Sức khoẻ & y tế",
     units: "I26 A37",
     items: [
       ["health", "sức khoẻ",
@@ -524,7 +525,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "work", icon: "💼", name: "Work & Employment", vi: "Công việc & việc làm",
+    id: "work", icon: "briefcase", name: "Work & Employment", vi: "Công việc & việc làm",
     units: "I30 A11 A12",
     items: [
       ["employees", "nhân viên, người lao động",
@@ -599,7 +600,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "crime", icon: "⚖️", name: "Crime & Law", vi: "Tội phạm & pháp luật",
+    id: "crime", icon: "scale", name: "Crime & Law", vi: "Tội phạm & pháp luật",
     units: "I34 I35 A38",
     items: [
       ["crime", "tội phạm (hành vi)",
@@ -684,7 +685,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "government", icon: "🏛️", name: "Government & Society", vi: "Chính phủ & chi tiêu công",
+    id: "government", icon: "landmark", name: "Government & Society", vi: "Chính phủ & chi tiêu công",
     units: "I39 A30 A35",
     items: [
       ["the government", "chính phủ",
@@ -762,7 +763,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "economy", icon: "🌐", name: "Economy & Globalisation", vi: "Kinh tế & toàn cầu hoá",
+    id: "economy", icon: "globe", name: "Economy & Globalisation", vi: "Kinh tế & toàn cầu hoá",
     units: "I37 A33 A34",
     items: [
       ["globalisation", "toàn cầu hoá",
@@ -832,7 +833,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "media", icon: "📺", name: "Media & Advertising", vi: "Truyền thông & quảng cáo",
+    id: "media", icon: "tv", name: "Media & Advertising", vi: "Truyền thông & quảng cáo",
     units: "I36 A21 A22 A42",
     items: [
       ["advertising", "quảng cáo",
@@ -900,7 +901,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "family", icon: "👨‍👩‍👧", name: "Family & Children", vi: "Gia đình & trẻ em",
+    id: "family", icon: "users", name: "Family & Children", vi: "Gia đình & trẻ em",
     units: "I19 I20 A19 A40",
     items: [
       ["children", "trẻ em",
@@ -973,7 +974,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "ageing", icon: "👵", name: "Population & Ageing", vi: "Dân số & già hoá",
+    id: "ageing", icon: "person-standing", name: "Population & Ageing", vi: "Dân số & già hoá",
     units: "A41",
     items: [
       ["the elderly", "người cao tuổi",
@@ -1039,7 +1040,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "tourism", icon: "🧳", name: "Tourism & Culture", vi: "Du lịch & văn hoá",
+    id: "tourism", icon: "luggage", name: "Tourism & Culture", vi: "Du lịch & văn hoá",
     units: "I14 A23 A26",
     items: [
       ["tourism", "ngành du lịch",
@@ -1103,7 +1104,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "food", icon: "🌾", name: "Food & Agriculture", vi: "Thực phẩm & nông nghiệp",
+    id: "food", icon: "wheat", name: "Food & Agriculture", vi: "Thực phẩm & nông nghiệp",
     units: "I22",
     items: [
       ["food", "thực phẩm",
@@ -1177,7 +1178,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "business", icon: "📈", name: "Business & Marketing", vi: "Kinh doanh, marketing & khách hàng",
+    id: "business", icon: "trending-up", name: "Business & Marketing", vi: "Kinh doanh, marketing & khách hàng",
     units: "I31 A14 A15 A16",
     items: [
       ["business", "công ty, việc kinh doanh",
@@ -1243,7 +1244,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "arts", icon: "🎭", name: "Arts, Sport & Leisure", vi: "Phim, sách, âm nhạc, thể thao, thời trang",
+    id: "arts", icon: "drama", name: "Arts, Sport & Leisure", vi: "Phim, sách, âm nhạc, thể thao, thời trang",
     units: "I23 I24 I25 A24 A27 A29",
     items: [
       ["films", "phim",
@@ -1299,7 +1300,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "war", icon: "🕊️", name: "War & Peace", vi: "Chiến tranh & hoà bình",
+    id: "war", icon: "shield", name: "War & Peace", vi: "Chiến tranh & hoà bình",
     units: "I38 A39",
     items: [
       ["war", "chiến tranh",
@@ -1354,7 +1355,7 @@ App.data.topics = [
     ],
   },
   {
-    id: "people", icon: "🧑", name: "People & Personality", vi: "Tính cách, ngoại hình, nhận xét về người",
+    id: "people", icon: "user-round", name: "People & Personality", vi: "Tính cách, ngoại hình, nhận xét về người",
     units: "I17 I18 A43 A45",
     items: [
       ["personality", "tính cách",
@@ -1409,7 +1410,7 @@ App.data.topics = [
     ],
   },
   {
-    group: "skill", id: "opinion", icon: "💬", name: "Opinions & Beliefs", vi: "Nêu quan điểm, đồng ý / phản đối, khẳng định / phủ nhận",
+    group: "skill", id: "opinion", icon: "message-circle", name: "Opinions & Beliefs", vi: "Nêu quan điểm, đồng ý / phản đối, khẳng định / phủ nhận",
     units: "I55 I56 I58 A13 A58",
     items: [
       ["opinion", "ý kiến, quan điểm",
@@ -1459,7 +1460,7 @@ App.data.topics = [
     ],
   },
   {
-    group: "skill", id: "academic", icon: "📝", name: "Academic Writing", vi: "Lập luận, so sánh – đối chiếu, trích dẫn, viết bài luận",
+    group: "skill", id: "academic", icon: "pen-line", name: "Academic Writing", vi: "Lập luận, so sánh – đối chiếu, trích dẫn, viết bài luận",
     units: "I32 I33 A18 A44 A55",
     items: [
       ["research", "nghiên cứu",
@@ -1515,7 +1516,7 @@ App.data.topics = [
     ],
   },
   {
-    group: "skill", id: "cause", icon: "🔗", name: "Cause & Effect", vi: "Nguyên nhân – kết quả",
+    group: "skill", id: "cause", icon: "link", name: "Cause & Effect", vi: "Nguyên nhân – kết quả",
     units: "I53 A53",
     items: [
       ["causes", "nguyên nhân",
@@ -1558,7 +1559,7 @@ App.data.topics = [
     ],
   },
   {
-    group: "skill", id: "change", icon: "📊", name: "Change, Numbers & Trends", vi: "Thay đổi, số lượng, kích thước (rất hợp Task 1)",
+    group: "skill", id: "change", icon: "chart-column", name: "Change, Numbers & Trends", vi: "Thay đổi, số lượng, kích thước (rất hợp Task 1)",
     units: "I42 I46 I48 A50 A51 A54",
     items: [
       ["an increase", "sự tăng",
@@ -1607,7 +1608,7 @@ App.data.topics = [
     ],
   },
   {
-    group: "skill", id: "decision", icon: "🧭", name: "Decisions & Plans", vi: "Quyết định, lựa chọn, kế hoạch",
+    group: "skill", id: "decision", icon: "compass", name: "Decisions & Plans", vi: "Quyết định, lựa chọn, kế hoạch",
     units: "I57 A28",
     items: [
       ["decisions", "quyết định",
@@ -1657,7 +1658,7 @@ App.data.topics = [
     ],
   },
   {
-    group: "skill", id: "effort", icon: "🏔️", name: "Success, Effort & Difficulty", vi: "Thành công – thất bại, nỗ lực, khó khăn, làm cho dễ hơn",
+    group: "skill", id: "effort", icon: "mountain", name: "Success, Effort & Difficulty", vi: "Thành công – thất bại, nỗ lực, khó khăn, làm cho dễ hơn",
     units: "I52 A48 A49 A56",
     items: [
       ["success", "thành công",
@@ -1706,7 +1707,7 @@ App.data.topics = [
     ],
   },
   {
-    group: "skill", id: "time", icon: "⏳", name: "Time, Starting & Stopping", vi: "Thời gian, bắt đầu – kết thúc",
+    group: "skill", id: "time", icon: "hourglass", name: "Time, Starting & Stopping", vi: "Thời gian, bắt đầu – kết thúc",
     units: "I40 I51 A46 A52",
     items: [
       ["time", "thời gian",
@@ -1751,7 +1752,7 @@ App.data.topics = [
     ],
   },
   {
-    group: "skill", id: "feelings", icon: "💗", name: "Feelings & Evaluation", vi: "Thích – ghét, khen – chê, tình huống tích cực / tiêu cực",
+    group: "skill", id: "feelings", icon: "heart", name: "Feelings & Evaluation", vi: "Thích – ghét, khen – chê, tình huống tích cực / tiêu cực",
     units: "I59 I60 A59 A60",
     items: [
       ["praise", "lời khen ngợi",
@@ -1803,7 +1804,7 @@ App.data.topics = [
     ],
   },
   {
-    group: "skill", id: "communication", icon: "🗣️", name: "Communication", vi: "Giao tiếp, cách nói, tiếng Anh xã giao",
+    group: "skill", id: "communication", icon: "messages-square", name: "Communication", vi: "Giao tiếp, cách nói, tiếng Anh xã giao",
     units: "I49 A9 A20 A57",
     items: [
       ["conversation", "cuộc trò chuyện",
@@ -1857,7 +1858,7 @@ App.data.topics = [
     ],
   },
   {
-    group: "skill", id: "verbs", icon: "🔧", name: "Everyday Verbs", vi: "make, do, take, have, get, go… và cụm động từ",
+    group: "skill", id: "verbs", icon: "wrench", name: "Everyday Verbs", vi: "make, do, take, have, get, go… và cụm động từ",
     units: "I7 I8 I9 A8 A10",
     items: [
       ["action", "hành động, biện pháp",
@@ -1912,7 +1913,7 @@ App.data.topics = [
     ],
   },
   {
-    group: "skill", id: "senses", icon: "👂", name: "Senses & Movement", vi: "Âm thanh, màu sắc, chuyển động, ghi nhớ",
+    group: "skill", id: "senses", icon: "ear", name: "Senses & Movement", vi: "Âm thanh, màu sắc, chuyển động, ghi nhớ",
     units: "I41 I43 I44 I45 I47 I50 I54 A47",
     items: [
       ["noise", "tiếng ồn",
@@ -1951,7 +1952,7 @@ App.data.topics = [
     ],
   },
   {
-    group: "skill", id: "basics", icon: "🧱", name: "Collocation Basics", vi: "Trạng từ nhấn mạnh, từ dễ nhầm, ẩn dụ, văn phong",
+    group: "skill", id: "basics", icon: "blocks", name: "Collocation Basics", vi: "Trạng từ nhấn mạnh, từ dễ nhầm, ẩn dụ, văn phong",
     units: "I1 I2 I3 I4 I5 I6 I10 I11 I12 A1 A2 A3 A4 A5 A6 A7",
     items: [
       ["access", "sự tiếp cận, quyền sử dụng",

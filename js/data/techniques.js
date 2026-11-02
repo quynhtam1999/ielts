@@ -98,6 +98,6 @@ App.data.warnings = [
 
 App.data.studyTips = [
   { title: 'Học theo cụm chủ đề', body: 'Không học theo danh sách đồng nghĩa. Với mỗi từ quan trọng, hãy nghĩ đủ 4 hướng: Tổng quát / Cụ thể / Theo vai trò / Biến thể từ loại, kèm collocation.', link: '#topics', linkText: 'Mở Chủ đề' },
-  { title: 'Đọc và “săn” chuỗi tham chiếu', body: 'Khi đọc bài mẫu hay báo (mục Cities của The Guardian rất hợp với chủ đề quy hoạch), hãy gạch chân mọi cách tác giả gọi cùng một sự vật.', link: '#hunt', linkText: 'Mở công cụ Săn tham chiếu' },
+  { title: 'Đọc và “săn” chuỗi tham chiếu', body: 'Khi đọc bài mẫu hay báo (mục Cities của The Guardian rất hợp với chủ đề quy hoạch), hãy gạch chân mọi cách tác giả gọi cùng một sự vật.', link: 'https://www.theguardian.com/cities', linkText: 'Mở mục Cities của The Guardian' },
   { title: 'Kiểm tra collocation trước khi dùng', body: 'Tra Oxford Learner’s Dictionaries hoặc từ điển collocation (như ozdic.com) để chắc từ mới đi với từ nào.', link: 'https://www.oxfordlearnersdictionaries.com/', linkText: 'Oxford Learner’s Dictionaries' },
 ];

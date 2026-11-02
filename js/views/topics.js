@@ -1,7 +1,7 @@
 // Trang Chủ đề. Các địa chỉ:
 //   #topics                    danh sách chủ đề (+ ô tìm kiếm)
 //   #topics/<id>               một chủ đề: danh sách từ khoá, tiến độ, nút học tiếp / ôn lại
-//   #topics/<id>/terms/<n>     📝 từ khoá thứ n: tự viết ① cách gọi khác ② collocation → Xem đáp án → tự đánh giá
+//   #topics/<id>/terms/<n>     từ khoá thứ n: tự viết ① cách gọi khác ② collocation → Xem đáp án → tự đánh giá
 // Không chấm điểm tự động: bạn tự so bài viết của mình với đáp án mẫu (js/data/topics.js).
 // Kết quả lưu ở state.topics[id][từ khoá] = { ok: true (đã nhớ) | false (cần ôn) | null (mới xem), date }
 App.views.topics = {
@@ -101,7 +101,7 @@ App.views.topics = {
     const card = (t) => {
       const a = this.termStats(t);
       return `<a class="card topic-card" href="#topics/${t.id}">
-        <div class="topic-icon">${t.icon}</div>
+        <div class="topic-icon">${App.icon(t.icon)}</div>
         <h3>${esc(t.name)}</h3>
         <p class="small muted">${esc(t.vi)}</p>
         ${this.bar(a.total ? (a.done / a.total) * 100 : 0)}
@@ -114,7 +114,7 @@ App.views.topics = {
     el.innerHTML = `
       <section class="hero">
         <span class="eyebrow">${App.data.topics.length} chủ đề · ${total} từ khoá</span>
-        <h1>Học theo <span class="gradient-text">chủ đề</span></h1>
+        <h1>Học theo <em class="accent">chủ đề</em></h1>
         <p class="muted">Với mỗi từ khoá, tự viết các <b>cách gọi khác</b> (paraphrase) và <b>collocation</b> đi kèm,
           rồi xem đáp án mẫu soạn từ <i>English Collocations in Use</i> để tự so.</p>
         <form class="search-box" id="find">
@@ -145,14 +145,14 @@ App.views.topics = {
       <a class="back" href="#topics">← Tất cả chủ đề</a>
       <section class="hero">
         <span class="eyebrow">${t.group === 'skill' ? 'Collocation theo chức năng' : 'Chủ đề IELTS'} · ${st.total} từ khoá</span>
-        <h1>${t.icon} ${esc(t.name)}</h1>
+        <h1 class="with-icon">${App.icon(t.icon)}${esc(t.name)}</h1>
         <p class="muted" style="margin:0">${esc(t.vi)}</p>
         ${this.bar((st.done / st.total) * 100)}
         <p class="small muted" style="margin:0 0 1.1rem">Đã làm ${st.done}/${st.total}${st.ok ? ` · ${st.ok} từ đã nhớ` : ''}${st.weak ? ` · ${st.weak} từ cần ôn` : ''}</p>
         <div class="row">
-          ${next >= 0 ? `<a class="btn primary" href="#topics/${t.id}/terms/${next}">${st.done ? 'Làm tiếp' : 'Bắt đầu'} ▶</a>` : ''}
-          ${weak ? `<a class="btn${next < 0 ? ' primary' : ''}" href="#topics/${t.id}/terms/${weak.j}">↺ Ôn từ cần ôn (${st.weak})</a>` : ''}
-          ${next < 0 && !weak ? '<span class="good small">Bạn đã làm hết chủ đề này 🎉 Bấm vào một từ để làm lại.</span>' : ''}
+          ${next >= 0 ? `<a class="btn primary" href="#topics/${t.id}/terms/${next}">${st.done ? 'Làm tiếp' : 'Bắt đầu'} ${App.icon('arrow-right')}</a>` : ''}
+          ${weak ? `<a class="btn${next < 0 ? ' primary' : ''}" href="#topics/${t.id}/terms/${weak.j}">${App.icon('rotate-ccw')} Ôn từ cần ôn (${st.weak})</a>` : ''}
+          ${next < 0 && !weak ? '<span class="good small">Bạn đã làm hết chủ đề này. Bấm vào một từ để làm lại.</span>' : ''}
         </div>
       </section>
       <section class="card">
@@ -166,7 +166,7 @@ App.views.topics = {
       ${src ? `<p class="small muted">Collocation tham khảo từ <i>English Collocations in Use</i>, ${esc(src)}.</p>` : ''}`;
   },
 
-  // ===================== 📝 Một từ khoá =====================
+  // ===================== Một từ khoá =====================
   renderItem(el, t, i) {
     const esc = App.ui.esc;
     const it = this.parse(t.items[i]);
@@ -177,7 +177,7 @@ App.views.topics = {
     const lastText = { ok: 'đã nhớ', low: 'cần ôn', seen: 'đã xem đáp án' }[this.status(last)];
 
     el.innerHTML = `
-      <a class="back" href="#topics/${t.id}">← ${t.icon} ${esc(t.name)}</a>
+      <a class="back" href="#topics/${t.id}">← ${esc(t.name)}</a>
       <div class="row spread small muted"><span>Từ khoá ${i + 1} / ${n}</span>${last ? `<span>Lần trước (${esc(last.date)}): ${lastText}</span>` : ''}</div>
       ${this.bar(((i + 1) / n) * 100)}
 
@@ -187,7 +187,7 @@ App.views.topics = {
             <h1 class="term">${esc(it.term)}</h1>
             <div class="vi">${esc(it.vi)}</div>
           </div>
-          <button class="icon-btn" id="speak" title="Nghe phát âm" aria-label="Nghe phát âm">🔊</button>
+          <button class="icon-btn" id="speak" title="Nghe phát âm" aria-label="Nghe phát âm">${App.icon('volume-2')}</button>
         </div>
 
         <div class="stack">
@@ -204,12 +204,12 @@ App.views.topics = {
         </div>
         <div class="row" style="margin-top:1.3rem" id="actions">
           <button class="primary" id="show">Xem đáp án</button>
-          <button id="hint">💡 Gợi ý chữ cái đầu</button>
+          <button id="hint">${App.icon('lightbulb')} Gợi ý chữ cái đầu</button>
         </div>
         <div id="answer"></div>
         <div class="term-foot">
-          ${i > 0 ? `<a class="btn ghost" href="#topics/${t.id}/terms/${i - 1}">◀ Từ trước</a>` : '<span></span>'}
-          <a class="btn ghost" href="${nextHref}">${i + 1 < n ? 'Bỏ qua ▶' : 'Về danh sách ▶'}</a>
+          ${i > 0 ? `<a class="btn ghost" href="#topics/${t.id}/terms/${i - 1}">${App.icon('arrow-left')} Từ trước</a>` : '<span></span>'}
+          <a class="btn ghost" href="${nextHref}">${i + 1 < n ? 'Bỏ qua' : 'Về danh sách'} ${App.icon('arrow-right')}</a>
         </div>
       </section>`;
 
@@ -247,14 +247,14 @@ App.views.topics = {
             <div class="ans-title">② Collocation <span class="muted">(${it.colls.length})</span></div>
             <div>${it.colls.map((c) => chip(this.showColl(c, it.term), this.fillColl(c, it.term))).join('')}</div>
           </div>
-          ${it.note ? `<p class="note small" style="margin:1rem 0 0">⚠️ ${esc(it.note)}</p>` : ''}
+          ${it.note ? `<p class="note small" style="margin:1rem 0 0">${esc(it.note)}</p>` : ''}
           <p class="small muted" style="margin:.9rem 0 0">So với bài bạn viết ở trên. Bấm vào một cụm để nghe đọc.</p>
         </div>
         <div class="rate">
           <span class="small muted">Bạn thấy từ này thế nào?</span>
           <div class="row">
-            <button class="primary" id="ok">✓ Đã nhớ</button>
-            <button id="low">↺ Cần ôn lại</button>
+            <button class="primary" id="ok">${App.icon('check')} Đã nhớ</button>
+            <button id="low">${App.icon('rotate-ccw')} Cần ôn lại</button>
           </div>
         </div>`;
       $('#answer').querySelectorAll('[data-say]').forEach((b) => b.addEventListener('click', () => this.say(b.dataset.say)));
