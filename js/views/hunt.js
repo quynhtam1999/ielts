@@ -25,7 +25,8 @@ App.views.hunt = {
     const saved = App.store.state.hunts;
     this.el.innerHTML = `
       <section class="card">
-        <h1>Săn chuỗi tham chiếu</h1>
+        <span class="eyebrow">Đọc chủ động</span>
+        <h1>Săn chuỗi <span class="gradient-text">tham chiếu</span></h1>
         <p>Dán một đoạn văn tiếng Anh (bài mẫu IELTS, mục <a href="https://www.theguardian.com/cities" target="_blank" rel="noopener">Cities của The Guardian</a>…). Sau đó bấm vào các từ để tô màu mọi cách tác giả gọi <b>cùng một sự vật</b>.</p>
         <textarea id="src" placeholder="Paste a paragraph here…" style="min-height:160px">${esc(this.text)}</textarea>
         <p><button class="primary" id="go">Bắt đầu đánh dấu →</button></p>

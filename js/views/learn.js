@@ -3,9 +3,10 @@ App.views.learn = {
   render(el, args) {
     const D = App.data;
     el.innerHTML = `
-      <section class="card">
-        <h1>5 kỹ thuật paraphrase</h1>
-        <p class="muted">Đọc từng kỹ thuật, rồi bấm “Luyện kỹ thuật này” để làm bài tập ngay.</p>
+      <section class="hero">
+        <span class="eyebrow">Lý thuyết</span>
+        <h1>5 kỹ thuật <span class="gradient-text">paraphrase</span></h1>
+        <p class="muted">Đọc từng kỹ thuật kèm ví dụ, rồi sang mục Chủ đề để tự viết cách gọi khác cho từng từ khoá.</p>
         <div class="row">${D.techniques.map((t) => `<a class="chip" href="#learn/${t.id}">${t.no}. ${t.name}</a>`).join('')}
           <a class="chip" href="#learn/warnings">⚠️ Cảnh báo</a><a class="chip" href="#learn/tips">📚 Cách học</a></div>
       </section>

@@ -7,10 +7,10 @@ App.store = {
   defaultState() {
     return {
       version: 2,
-      activity: {},  // { '2026-11-02': { topics: 5, colloc: 10 } } số bài làm mỗi ngày
-      topics: {},    // từ khoá: { urban: { 'public transport': { pct: 70, para, coll, date } } }
-      colloc: {},    // collocation: { 'ease traffic congestion': { ok: 2, bad: 1, last: '2026-11-02' } }
-      hunts: [],     // các đoạn văn đã săn tham chiếu
+      activity: {},     // { '2026-11-02': { topics: 5, review: 2 } } số từ làm mới / ôn lại mỗi ngày
+      topics: {},       // kết quả từ khoá: { urban: { 'public transport': { pct: 70, date: '2026-11-02' } } }
+      hunts: [],        // các đoạn văn đã săn tham chiếu
+      lastTopic: null,  // chủ đề học gần nhất (cho nút "Học tiếp")
     };
   },
 
@@ -60,14 +60,5 @@ App.store = {
       d = App.ui.addDays(d, -1);
     }
     return count;
-  },
-
-  // Ghi kết quả một câu điền collocation
-  recordColloc(c, ok) {
-    const s = this.state.colloc[c] || (this.state.colloc[c] = { ok: 0, bad: 0 });
-    if (ok) s.ok++; else s.bad++;
-    s.last = App.ui.today();
-    s.lastOk = ok;
-    this.save();
   },
 };
