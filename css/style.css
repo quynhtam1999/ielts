@@ -1,6 +1,6 @@
 /* =========================================================
-   Paraphrase Studio: tối giản, đơn sắc hồng rose
-   - Nền giấy hồng rất nhạt, chữ màu rượu vang đậm (dễ đọc), điểm nhấn hồng rose
+   Paraphrase Studio: tối giản, nền tối, đơn sắc hồng rose
+   - Nền tối ánh hồng, chữ trắng hồng (dễ đọc), điểm nhấn hồng rose
    - Không gradient, không bóng đổ, ít viền
    - 1 font có chân duy nhất: Merriweather (đủ dấu tiếng Việt)
    - Biểu tượng nét mảnh một màu: js/icons.js
@@ -8,19 +8,20 @@
    Muốn chữ to/nhỏ hơn: sửa font-size của html (100% = 16px)
    ========================================================= */
 :root {
-  color-scheme: light;
-  --bg: #fbf6f7;          /* nền giấy hồng rất nhạt */
-  --surface: #ffffff;     /* thẻ */
-  --surface-2: #f7edf0;   /* nền chip, nút khi rê chuột */
-  --line: #efe1e5;        /* đường kẻ mảnh */
-  --line-strong: #e2c9d1;
-  --text: #3a2129;        /* chữ chính: rượu vang đậm */
-  --muted: #7a5763;       /* chữ phụ */
-  --faint: #b0909b;       /* chữ gợi ý trong ô nhập */
-  --rose: #b2456a;        /* màu nhấn duy nhất */
-  --rose-deep: #93304f;   /* khi rê chuột */
-  --rose-mid: #e3a3b7;    /* chấm "cần ôn" */
-  --rose-soft: #f8e6ec;   /* nền tô nhạt */
+  color-scheme: dark;
+  --bg: #141013;          /* nền tối ánh hồng */
+  --surface: #1c1619;     /* thẻ */
+  --surface-2: #261d21;   /* nền chip, nút khi rê chuột */
+  --line: #2f2429;        /* đường kẻ mảnh */
+  --line-strong: #47353d;
+  --text: #f5e8ec;        /* chữ chính: trắng ánh hồng */
+  --muted: #b39aa3;       /* chữ phụ */
+  --faint: #7d6770;       /* chữ gợi ý trong ô nhập */
+  --rose: #e98aa9;        /* màu nhấn duy nhất */
+  --rose-deep: #f4adc3;   /* khi rê chuột (sáng hơn) */
+  --rose-mid: #8e4a62;    /* chấm "cần ôn", viền nhấn */
+  --rose-soft: #2a1c22;   /* nền tô nhạt */
+  --on-rose: #1a0f14;     /* chữ trên nút hồng */
   --font: "Merriweather", Georgia, "Times New Roman", serif;  /* 1 font duy nhất cho mọi chữ */
   --radius: 16px;
 }
@@ -62,7 +63,7 @@ h3 { font-size: 1rem; margin: 1rem 0 .5rem; }
 .topbar {
   position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 1rem;
   padding: .8rem max(1.25rem, calc((100vw - 980px) / 2 + 1.25rem));
-  background: rgba(251, 246, 247, .9); border-bottom: 1px solid var(--line);
+  background: rgba(20, 16, 19, .88); border-bottom: 1px solid var(--line);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
 }
 .brand { font-size: 1.05rem; font-weight: 600; color: var(--text); white-space: nowrap; }
@@ -103,8 +104,8 @@ button, .btn {
 button:hover, .btn:hover { border-color: var(--rose); color: var(--rose); }
 button:active, .btn:active { transform: scale(.98); }
 button:disabled { opacity: .45; cursor: not-allowed; transform: none; }
-.primary { background: var(--rose); border-color: var(--rose); color: #fff; font-weight: 600; }
-.primary:hover { background: var(--rose-deep); border-color: var(--rose-deep); color: #fff; }
+.primary { background: var(--rose); border-color: var(--rose); color: var(--on-rose); font-weight: 600; }
+.primary:hover { background: var(--rose-deep); border-color: var(--rose-deep); color: var(--on-rose); }
 .ghost { background: transparent; border-color: transparent; color: var(--muted); }
 .ghost:hover { background: transparent; border-color: transparent; color: var(--rose); }
 input[type=text], input[type=search], textarea, select {
@@ -152,7 +153,7 @@ th { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-sp
   width: 1.7rem; height: 1.7rem; border-radius: 50%; display: grid; place-items: center;
   border: 1px solid var(--line-strong); flex: none; font-size: .85rem;
 }
-.mission .done .check { background: var(--rose); border-color: var(--rose); color: #fff; }
+.mission .done .check { background: var(--rose); border-color: var(--rose); color: var(--on-rose); }
 .mission .grow { flex: 1; min-width: 0; }
 
 /* ===== Thanh tiến độ ===== */
@@ -162,7 +163,7 @@ th { font-size: .7rem; color: var(--muted); text-transform: uppercase; letter-sp
 /* ===== Thông báo nổi ===== */
 .toast {
   position: fixed; bottom: calc(1.4rem + env(safe-area-inset-bottom)); left: 50%;
-  transform: translateX(-50%) translateY(200%); background: var(--text); color: #fff;
+  transform: translateX(-50%) translateY(200%); background: var(--text); color: var(--bg);
   padding: .65rem 1.3rem; border-radius: 999px; font-size: .9rem;
   transition: transform .3s, opacity .3s; z-index: 50; max-width: 90vw; opacity: 0; pointer-events: none;
 }
@@ -236,7 +237,7 @@ button.chip { font: inherit; font-size: .88rem; min-height: 0; padding: .3rem .8
 .hit-topic { font-size: .72rem; color: var(--rose); letter-spacing: .06em; white-space: nowrap; }
 .hit-item .chip { font-size: .8rem; }
 .hit-item .chip .k, .k { color: var(--rose); }
-mark { background: #f3d2dd; color: var(--text); border-radius: 3px; padding: 0 .1em; }
+mark { background: #5b2a3c; color: var(--text); border-radius: 3px; padding: 0 .1em; }
 
 /* ===== Máy tính bảng & điện thoại ===== */
 @media (max-width: 900px) {

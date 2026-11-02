@@ -29,7 +29,7 @@
 ## Kiến trúc
 - **HTML/CSS/JS thuần**, không framework, không build, **không ES modules** (vì `file://`). Mọi thứ gắn vào `window.App`; **thứ tự `<script>` trong `index.html` quan trọng**.
 - Router hash: `#trang/a/b` → `App.views[trang].render(el, ['a','b'])` (`js/app.js`).
-- Giao diện sáng, tối giản, **đơn sắc hồng rose**: nền giấy hồng nhạt `#fbf6f7`, chữ rượu vang `#3a2129`, nhấn `--rose #b2456a`; không gradient, không bóng đổ. **1 font có chân duy nhất: Merriweather** (biến `--font`). Cỡ chữ gốc `html { font-size: 112.5% }` = 18px (điện thoại 17px). Biểu tượng: `App.icon(tên)` trong `js/icons.js` (Lucide, nét mảnh, nhận màu chữ); chủ đề có `icon: "leaf"`… Favicon: `favicon.svg`. Responsive (900px menu ☰, 640px điện thoại). Màu ở `:root` trong `css/style.css`.
+- Giao diện **nền tối**, tối giản, **đơn sắc hồng rose**: nền `#141013`, chữ trắng hồng `#f5e8ec`, nhấn `--rose #e98aa9` (chữ trên nút hồng: `--on-rose`); không gradient, không bóng đổ. **1 font có chân duy nhất: Merriweather** (biến `--font`). Cỡ chữ gốc `html { font-size: 112.5% }` = 18px (điện thoại 17px). Biểu tượng: `App.icon(tên)` trong `js/icons.js` (Lucide, nét mảnh, nhận màu chữ); chủ đề có `icon: "leaf"`… Favicon: `favicon.svg`. Responsive (900px menu ☰, 640px điện thoại). Màu ở `:root` trong `css/style.css`.
 
 ```
 index.html             khung + menu (Trang chủ, Chủ đề, Tìm kiếm, Học kỹ thuật) + nạp script
