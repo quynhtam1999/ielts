@@ -17,9 +17,8 @@ App.store = {
         ...w,
         srs: { box: 0, due: today },
       })),
-      activity: {},      // { '2026-11-02': { drills: 5, writing: 1, ... } }
-      drillStats: {},    // { level: { correct: 3, total: 4 } }
-      drillMistakes: {}, // { lv1: 2 } số lần làm sai từng câu
+      activity: {},      // { '2026-11-02': { topics: 5, writing: 1, ... } }
+      topics: {},        // { urban: { 'public transport': { pct: 70, para, coll, date } } }
       writing: [],       // các bài viết đã lưu
       speaking: [],      // các câu trả lời đã lưu
       hunts: [],         // các đoạn văn đã săn tham chiếu
@@ -93,15 +92,6 @@ App.store = {
     const box = grade === 0 ? 0 : Math.min((w.srs?.box || 0) + grade, this.INTERVALS.length - 1);
     const days = grade === 0 ? 0 : this.INTERVALS[box];
     w.srs = { box, due: App.ui.addDays(App.ui.today(), days) };
-    this.save();
-  },
-
-  // ----- Thống kê luyện tập -----
-  recordDrill(drill, correct) {
-    const s = this.state.drillStats[drill.tech] || (this.state.drillStats[drill.tech] = { correct: 0, total: 0 });
-    s.total++;
-    if (correct) s.correct++;
-    else this.state.drillMistakes[drill.id] = (this.state.drillMistakes[drill.id] || 0) + 1;
     this.save();
   },
 

@@ -1,4 +1,4 @@
-// Bộ định tuyến: đọc phần sau dấu # trên địa chỉ (vd: #drills/role)
+// Bộ định tuyến: đọc phần sau dấu # trên địa chỉ (vd: #topics/urban)
 // rồi gọi trang tương ứng trong App.views.
 (function () {
   App.store.load();

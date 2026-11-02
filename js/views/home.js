@@ -25,10 +25,17 @@ App.views.home = {
         </div>
       </section>
 
+      <a class="card cta" href="#topics">
+        <span class="topic-icon">📚</span>
+        <span class="grow"><b>Từ vựng theo 16 chủ đề</b><br>
+          <span class="small muted">Chọn chủ đề → tự điền cách gọi khác và collocation → so với đáp án mẫu</span></span>
+        <span class="btn primary">Bắt đầu ▶</span>
+      </a>
+
       <section class="card">
         <h2>Nhiệm vụ hôm nay <span class="muted small">(khoảng 25 phút)</span></h2>
         <ul class="mission">
-          ${item((t.drills || 0) >= 10, '#drills', '🎯 Làm 10 câu luyện kỹ thuật', `${t.drills || 0}/10 câu`)}
+          ${item((t.topics || 0) >= 5, '#topics', '📚 Tự điền 5 từ khoá theo chủ đề (cách gọi khác + collocation)', `${t.topics || 0}/5 từ`)}
           ${item((t.writing || 0) >= 1, '#writing', '✍️ Một đề Writing: viết 3 cách mở bài, mỗi cách một kỹ thuật (10 phút)', `${t.writing || 0}/1 bài`)}
           ${item((t.speaking || 0) >= 1, '#speaking', '🎤 Trả lời 1 câu Speaking, mở đầu bằng cách paraphrase câu hỏi', `${t.speaking || 0}/1 câu`)}
           ${item(reviewTarget === 0 || (t.review || 0) >= reviewTarget, '#review', '🗂️ Ôn thẻ từ vựng đến hạn', `${t.review || 0}/${reviewTarget} thẻ`)}
@@ -42,10 +49,7 @@ App.views.home = {
             <span class="tag">Kỹ thuật ${tc.no}</span>
             <h3>${tc.name}</h3>
             <p class="small muted">${tc.short}</p>
-            <div class="row">
-              <a class="btn" href="#learn/${tc.id}">Đọc</a>
-              <a class="btn primary" href="#drills/${tc.id}">Luyện</a>
-            </div>
+            <a class="btn" href="#learn/${tc.id}">Đọc</a>
           </div>`).join('')}
       </div>`;
   },

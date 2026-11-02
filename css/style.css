@@ -236,9 +236,10 @@ dialog::backdrop { background: rgba(3, 4, 8, .7); backdrop-filter: blur(4px); }
   position: fixed; bottom: calc(1.25rem + env(safe-area-inset-bottom)); left: 50%;
   transform: translateX(-50%) translateY(200%); background: var(--card-solid); color: var(--text);
   border: 1px solid var(--line-strong); padding: .65rem 1.2rem; border-radius: 999px;
-  transition: transform .25s; z-index: 50; max-width: 90vw; box-shadow: var(--shadow);
+  transition: transform .25s, opacity .25s; z-index: 50; max-width: 90vw; box-shadow: var(--shadow);
+  opacity: 0; pointer-events: none;
 }
-.toast.show { transform: translateX(-50%) translateY(0); }
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 details summary { cursor: pointer; font-weight: 600; }
 
 /* ===== Máy tính bảng & điện thoại ===== */
@@ -267,4 +268,42 @@ details summary { cursor: pointer; font-weight: 600; }
   .flash .word { font-size: 1.8rem; }
   .passage { font-size: 1rem; }
   input, textarea, select { font-size: 16px; }  /* tránh iPhone tự phóng to khi gõ */
+}
+
+/* ---------- Trang Chủ đề ---------- */
+.topic-card { display: block; color: var(--text); }
+.topic-card:hover { text-decoration: none; }
+.topic-card h3 { margin: .3rem 0 0; }
+.topic-card p { margin: .1rem 0 0; }
+.topic-icon { font-size: 1.9rem; line-height: 1; }
+.cta { display: flex; align-items: center; gap: 1rem; color: var(--text); border-color: rgba(155, 140, 255, .35);
+  background: linear-gradient(135deg, rgba(155, 140, 255, .14), rgba(95, 155, 255, .08)); }
+.cta:hover { text-decoration: none; border-color: var(--primary); }
+.cta .grow { flex: 1; }
+.term-nav { display: flex; flex-wrap: wrap; margin: 0 -.15rem; }
+.term-nav .chip { color: var(--muted); }
+.term-nav .chip.cur { color: var(--text); border-color: var(--primary); background: var(--primary-soft); font-weight: 600; }
+.term-nav .chip.ok { color: var(--ok); border-color: rgba(61, 220, 151, .35); }
+.term-nav .chip.low { color: var(--warn); border-color: rgba(245, 184, 74, .35); }
+.term-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: .6rem; }
+.term-head .term { margin: 0; font-size: 2rem; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.result { margin-top: .5rem; }
+.result > div:not(.small) { margin: 0 -.15rem; }
+.chip.hit { background: var(--ok-soft); border-color: rgba(61, 220, 151, .4); color: var(--ok); }
+.chip.hit b { color: var(--text); }
+.chip.miss { border-style: dashed; color: var(--text); }
+.chip.miss b { color: var(--gold); font-weight: 600; }
+.chip.hit .muted, .chip.miss .muted { font-weight: 400; }
+.chip.extra { background: var(--warn-soft); border-color: rgba(245, 184, 74, .35); color: var(--warn); }
+.hint { margin-top: .4rem; color: var(--muted); }
+.hint .chip { font-family: ui-monospace, Menlo, Consolas, monospace; letter-spacing: .03em; font-size: .82rem; }
+@media (max-width: 640px) {
+  .grid.topic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; }
+  .topic-card { padding: .9rem; }
+  .topic-card h3 { font-size: .98rem; line-height: 1.3; }
+  .topic-card .small { font-size: .78rem; }
+  .topic-icon { font-size: 1.5rem; }
+  .cta { flex-wrap: wrap; }
+  .cta .btn { width: 100%; text-align: center; }
+  .term-head .term { font-size: 1.6rem; }
 }

@@ -21,13 +21,12 @@ App.views.learn = {
           </table></div>
           <p>${t.extra}</p>
           <div class="info">💡 ${t.tip}</div>
-          <p><a class="btn primary" href="#drills/${t.id}">Luyện kỹ thuật này →</a></p>
         </section>`).join('')}
 
       <section class="card" id="t-warnings">
         <h2>⚠️ Cảnh báo</h2>
         <div class="stack">${D.warnings.map((w) => `<div class="note">${w}</div>`).join('')}</div>
-        <p><a class="btn" href="#drills/caution">Luyện collocation & từ khoá →</a></p>
+        <p><a class="btn primary" href="#topics">Luyện từ vựng theo chủ đề →</a></p>
       </section>
 
       <section class="card" id="t-tips">

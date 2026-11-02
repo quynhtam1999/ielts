@@ -3,7 +3,6 @@ App.views.data = {
   render(el) {
     const S = App.store.state;
     const esc = App.ui.esc;
-    const groups = App.data.drillGroups.filter((g) => g.id !== 'all');
 
     // 28 ngày gần nhất
     const days = [];
@@ -16,13 +15,12 @@ App.views.data = {
     el.innerHTML = `
       <section class="card">
         <h1>Tiến độ</h1>
-        <h3>Độ chính xác theo kỹ thuật</h3>
-        ${groups.map((g) => {
-          const st = S.drillStats[g.id] || { correct: 0, total: 0 };
-          const pct = st.total ? Math.round((st.correct / st.total) * 100) : 0;
-          return `<div class="meter"><span class="small label">${esc(g.name)}</span>
-            <div class="bar"><div style="width:${pct}%;background:var(--primary)"></div></div>
-            <span class="small val">${st.total ? pct + '% (' + st.total + ')' : '—'}</span></div>`;
+        <h3>Tiến độ theo chủ đề</h3>
+        ${App.data.topics.map((t) => {
+          const st = App.views.topics.topicStats(t);
+          return `<div class="meter"><a class="small label" href="#topics/${t.id}">${t.icon} ${esc(t.name)}</a>
+            <div class="bar"><div style="width:${(st.done / st.total) * 100}%;background:var(--primary)"></div></div>
+            <span class="small val">${st.done ? st.done + '/' + st.total + ' · ' + st.pct + '%' : '—'}</span></div>`;
         }).join('')}
         <h3>28 ngày gần đây</h3>
         <div style="display:grid;grid-template-columns:repeat(14,1fr);gap:4px">

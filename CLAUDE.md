@@ -37,27 +37,28 @@ js/storage.js          App.store: lưu/đọc, streak, ôn thẻ Leitner [0,1,2,
 js/analyzer.js         App.analyzer: so bài với đề (cụm 3 từ chép đề, % từ lấy lại, từ lặp)
 js/data/techniques.js  lý thuyết 5 kỹ thuật, cảnh báo, cách học
 js/data/wordbank.js    sổ từ mẫu (chép vào localStorage lần đầu)
-js/data/drills.js      câu luyện: mcq / type / ref ({{+đúng}} {{-nhiễu}}); tech: level|role|form|structure|reference|caution
+js/data/topics.js      16 chủ đề × 8 từ khoá: [từ, nghĩa, "cách gọi khác | …", "collocation ~ | …" (~ = từ khoá), ghi chú?]
 js/data/prompts.js     đề Writing Task 2 (keep = từ khoá được giữ, samples = mở bài mẫu) + Speaking Part 1/2/3
 js/views/*.js          mỗi file một trang (bảng dưới)
 ```
 
 | Hash | Chức năng |
 |---|---|
-| `#home` | streak, thống kê, nhiệm vụ ngày (10 câu luyện, 1 đề viết, 1 câu nói, ôn thẻ) |
+| `#home` | streak, thống kê, nút vào Chủ đề, nhiệm vụ ngày (5 từ theo chủ đề, 1 đề viết, 1 câu nói, ôn thẻ) |
+| `#topics/<id>/<n>` | **tính năng chính**: chọn chủ đề → mỗi từ khoá tự điền ① cách gọi khác ② collocation → Kiểm tra (so khớp theo từ gốc, chấp nhận viết gọn) → hiện đáp án ✓/thiếu/ngoài đáp án; `done` = tổng kết; lưu `state.topics` |
 | `#learn/<tech>` | lý thuyết + cảnh báo + cách học |
-| `#drills/<tech>` | 10 câu/lượt; `all`, `mistakes`, `caution` |
 | `#writing/<id>` | 3 mở bài + chọn kỹ thuật + phân tích + bài mẫu; `custom` tự nhập đề; `history` |
 | `#speaking/<id>` | đọc câu hỏi (speechSynthesis), ghi âm (MediaRecorder), giọng nói → chữ (Web Speech API, Chrome/Edge), phân tích |
 | `#bank` | sổ từ 4 cột + collocation, thêm/sửa/xoá, lọc chủ đề |
 | `#review` | thẻ ôn ngắt quãng |
 | `#hunt` | dán đoạn văn, tô 4 chuỗi tham chiếu, lưu |
-| `#data` | % đúng theo kỹ thuật, lịch 28 ngày, xuất/nhập/xoá dữ liệu |
+| `#data` | tiến độ theo chủ đề, lịch 28 ngày, xuất/nhập/xoá dữ liệu |
 
 ## Quy ước
 - Giao diện & comment: tiếng Việt. Nội dung tiếng Anh: Anh–Anh (BrE).
 - Chữ người dùng nhập → luôn qua `App.ui.esc()`. Dữ liệu trong `js/data/` là tin cậy (được có HTML).
 - Thêm nội dung chỉ cần sửa `js/data/*`.
+- **Người dùng KHÔNG muốn trắc nghiệm (chọn đáp án)**: đã bỏ trang Luyện tập (drills). Bài tập mới phải là dạng tự điền.
 - Kiểm thử: Playwright mở `file://…/index.html`, đi qua mọi hash, không có `pageerror`, kiểm tra màn hình 390px không cuộn ngang.
 
 ## Hướng phát triển
