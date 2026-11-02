@@ -19,7 +19,9 @@ Cách học: sổ từ 4 cột (Tổng quát / Cụ thể / Theo vai trò / Bi�
 
 ## Chạy & triển khai
 - Không cần cài đặt: **bấm đúp `index.html`** (Chrome/Edge). Dữ liệu lưu trong `localStorage` (khoá `paraphrase-studio-v1`). Sao lưu: trang Tiến độ → Xuất dữ liệu.
-- Dùng trên điện thoại: GitHub **Settings → Pages** → Deploy from branch `main`, thư mục `/ (root)` → `https://quynhtam1999.github.io/ielts-writing/`.
+- **Website: https://quynhtam1999.github.io/ielts/** (GitHub Pages, deploy từ nhánh `main`, thư mục `/ (root)`). Repo đổi tên `ielts-writing` → `ielts` để có đường dẫn `/ielts`. Push lên `main` là website tự cập nhật sau 1–2 phút.
+- `.nojekyll` để GitHub Pages phục vụ file tĩnh nguyên trạng. Mọi đường dẫn trong code phải là **tương đối** (`css/…`, `js/…`), không bắt đầu bằng `/`.
+- Dữ liệu trên website và khi mở file trên máy là **hai nơi riêng**; chuyển bằng Xuất/Nhập dữ liệu.
 
 ## Kiến trúc
 - **HTML/CSS/JS thuần**, không framework, không build. **Không dùng ES modules** (vì `file://` chặn). Mọi thứ gắn vào `window.App`; **thứ tự `<script>` trong `index.html` quan trọng**.
