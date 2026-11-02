@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paraphrase Studio – IELTS</title>
+  <meta name="description" content="Luyện 5 kỹ thuật paraphrase cho IELTS Academic Writing và Speaking">
+  <meta name="theme-color" content="#0a0c13">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Thanh điều hướng: mỗi link đổi phần sau dấu # trên địa chỉ, app.js sẽ hiển thị trang tương ứng -->
+  <header class="topbar">
+    <a class="brand" href="#home">✍️ Paraphrase Studio</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Mở menu">☰</button>
+    <nav id="nav">
+      <a href="#home" data-route="home">Trang chủ</a>
+      <a href="#learn" data-route="learn">Học kỹ thuật</a>
+      <a href="#drills" data-route="drills">Luyện tập</a>
+      <a href="#writing" data-route="writing">Writing</a>
+      <a href="#speaking" data-route="speaking">Speaking</a>
+      <a href="#bank" data-route="bank">Sổ từ vựng</a>
+      <a href="#review" data-route="review">Ôn thẻ</a>
+      <a href="#hunt" data-route="hunt">Săn tham chiếu</a>
+      <a href="#data" data-route="data">Tiến độ</a>
+    </nav>
+  </header>
+
+  <main id="app"></main>
+  <div id="toast" class="toast"></div>
+
+  <!-- Thứ tự nạp file quan trọng: dữ liệu → công cụ → các trang → bộ định tuyến -->
+  <script src="js/ui.js"></script>
+  <script src="js/data/techniques.js"></script>
+  <script src="js/data/wordbank.js"></script>
+  <script src="js/data/drills.js"></script>
+  <script src="js/data/prompts.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/analyzer.js"></script>
+  <script src="js/views/home.js"></script>
+  <script src="js/views/learn.js"></script>
+  <script src="js/views/drills.js"></script>
+  <script src="js/views/writing.js"></script>
+  <script src="js/views/speaking.js"></script>
+  <script src="js/views/bank.js"></script>
+  <script src="js/views/review.js"></script>
+  <script src="js/views/hunt.js"></script>
+  <script src="js/views/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
