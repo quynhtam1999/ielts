@@ -47,7 +47,7 @@ App.views.home = {
       </a>
 
       <section class="card">
-        <h2>Nhiệm vụ hôm nay <span class="muted small" style="font-family:var(--sans)">khoảng 20 phút</span></h2>
+        <h2>Nhiệm vụ hôm nay <span class="muted small">khoảng 20 phút</span></h2>
         <ul class="mission">
           ${item((t.topics || 0) >= NEW, where, `📝 Làm ${NEW} từ khoá mới`, `${t.topics || 0}/${NEW} từ`)}
           ${item((t.review || 0) >= REVIEW, weak ? `#topics/${weak.t.id}/terms/${weak.j}` : '',

@@ -29,7 +29,7 @@
 ## Kiến trúc
 - **HTML/CSS/JS thuần**, không framework, không build, **không ES modules** (vì `file://`). Mọi thứ gắn vào `window.App`; **thứ tự `<script>` trong `index.html` quan trọng**.
 - Router hash: `#trang/a/b` → `App.views[trang].render(el, ['a','b'])` (`js/app.js`).
-- Giao diện tối sang trọng: nền đen sâu + quầng sáng rất nhẹ, gradient tím → hồng → vàng champagne chỉ cho điểm nhấn, tiêu đề **Playfair Display**, chữ **Inter**, nút bo tròn, ít viền. Responsive (900px menu ☰, 640px điện thoại). Màu ở `:root` trong `css/style.css`.
+- Giao diện tối sang trọng: nền đen sâu + quầng sáng rất nhẹ, gradient tím → hồng → vàng champagne chỉ cho điểm nhấn, **1 font có chân duy nhất: Merriweather** (dễ đọc, đủ dấu tiếng Việt; biến `--font`), nút bo tròn, ít viền. Responsive (900px menu ☰, 640px điện thoại). Màu ở `:root` trong `css/style.css`.
 
 ```
 index.html             khung + menu (Trang chủ, Chủ đề, Tìm kiếm, Học kỹ thuật, Săn tham chiếu) + nạp script

@@ -123,7 +123,7 @@ App.views.topics = {
       </section>
       <h2>Chủ đề IELTS</h2>
       <div class="grid topic-grid">${topics.map(card).join('')}</div>
-      <h2>Collocation theo chức năng <span class="muted small" style="font-family:var(--sans)">dùng được cho mọi đề</span></h2>
+      <h2>Collocation theo chức năng <span class="muted small">dùng được cho mọi đề</span></h2>
       <div class="grid topic-grid">${skills.map(card).join('')}</div>`;
 
     el.querySelector('#find').addEventListener('submit', (e) => {
