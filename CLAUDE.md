@@ -6,6 +6,7 @@
 - Dr. Quỳnh Tâm (bác sĩ sản phụ khoa), **mới học code**. Trả lời bằng **tiếng Việt**, đơn giản, từng bước.
 - Mục tiêu: luyện **paraphrase** cho **IELTS Academic**, phục vụ **Writing + Speaking**.
 - **Git: commit và push thẳng lên `main`** (người dùng đã cho phép, không cần nhánh phụ/PR).
+- Repo: **`quynhtam1999/ielts`** (tên cũ `ielts-writing`, GitHub tự chuyển hướng).
 
 ## Nội dung học cốt lõi
 1. **Lên/xuống cấp độ**: homes, shops… ↔ facilities; area → zone → residential area.
